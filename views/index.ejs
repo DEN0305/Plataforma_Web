@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agua pura vida</title>
+    <link rel="stylesheet" href="/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <script src="https://kit.fontawesome.com/0dd34c83b9.js" crossorigin="anonymous"></script>
+
+</head>
+<body>
+    <header class="header">
+        <a href="#" class="logo">
+            <img src="" alt="">
+        </a>
+
+        <nav class="navbar">
+            <a href="#home">Inicio</a>
+            <a href="#about">Sobre</a>
+            <a href="#menu">Productos</a>
+            <a href="#contact">Contacto</a>
+        </nav>
+
+        <div class="icons">
+            <div>
+                <ul>
+
+                        <a href="/ver-carrito" ><button class="fas fa-shopping-cart agregar-carrito-btn2"></button> </a>
+
+        </div>
+        </div>
+
+
+    </header>
+
+    <section class="home" id="home">
+
+        <div class="content">
+            <h3>La mejor agua embotellada de la ciudad</h3>
+            <p>En Agua Pura Vida, ofrecemos más que agua embotellada: una experiencia única de frescura y calidad. Descubre la diferencia en cada sorbo, donde la autenticidad y la excelencia se encuentran en cada botella.</p>
+            <a href="#" class="btn">Obtenlas ahora</a>
+        </div>
+
+    </section>
+
+    <section class="about" id="about">
+        <h1 class="heading"><span>Sobre</span> nosotros </h1>
+
+        <div class="row">
+            <div class="image">
+                <img src="imagenes/prueba2.jpg" alt="">
+            </div>
+
+            <div class="content">
+                <h3>¿Que hace a nuestros productos especiales?</h3>
+                <p>"En Agua Pura Vida, nos enorgullece ofrecer una experiencia única a través de nuestras bebidas embotelladas. Lo que hace especiales a nuestros productos va más allá de la simple hidratación, se trata de la calidad excepcional y la dedicación a la excelencia. Cada botella que sale de nuestras instalaciones está impregnada con la pureza de los ingredientes seleccionados cuidadosamente y elaborada con un compromiso inquebrantable con los más altos estándares. Nos esforzamos por brindar no solo una bebida refrescante, sino una expresión auténtica de nuestro compromiso con la calidad y la satisfacción del cliente. Descubre la diferencia en cada sorbo, donde la frescura y la excelencia se encuentran en cada botella de Agua Pura Vida."</p>
+                <a href="#" class="btn">aprende mas</a>
+            </div>
+        </div>
+
+    </section>
+
+    <section class="menu" id="menu">
+        <h1 class="heading"> Nuestros <span>productos</span></h1>
+        <div class="box-container">
+            <div class="box">
+                <h3>Ricas y refrescantes</h3>
+                <div class="image">
+                    <img src="/imagenes/Imagen1.jpg" alt="">
+                </div>
+                <ul>
+                    <% if (productos.length > 0) { %>
+                        <li>
+        
+                            <h3><%= productos[0].Descripcion %><br>
+                                <%= productos[0].UMedida %><br>
+                                Precio: <%= productos[0].PUnitario %>
+                            </h3>
+                            <form action="/agregar-al-carrito/<%= productos[0].IdAlmacen %>" method="post">
+        
+                                <button type="submit" class="agregar-carrito-btn">Agregar al carrito</button>
+                            </form>
+                        </li>
+                    <% } else { %>
+                        <p>No hay productos disponibles</p>
+                    <% } %>
+            </ul>
+            </div>
+
+            <div class="box">
+                <h3>Ricas y refrescantes</h3>
+                <div class="image">
+                    <img src="/imagenes/Imagen2.jpg" alt="">
+                </div>
+                <ul>
+                    <% if (productos.length > 1) { %>
+                        <li>
+        
+                            <h3><%= productos[1].Descripcion %><br>
+                                <%= productos[1].UMedida %><br>
+                                Precio: <%= productos[1].PUnitario %>
+                            </h3>
+                            <form action="/agregar-al-carrito/<%= productos[1].IdAlmacen %>" method="post">
+        
+                                <button type="submit" class="agregar-carrito-btn">Agregar al carrito</button>
+                            </form>
+                        </li>
+                    <% } else { %>
+                        <p>No hay productos disponibles</p>
+                    <% } %>
+            </ul>
+            </div>
+
+            <div class="box">
+                <h3>Ricas y refrescantes</h3>
+                <div class="image">
+                    <img src="/imagenes/Imagen3.jpg" alt="">
+                </div>
+                <ul>
+                    <% if (productos.length > 2) { %>
+                        <li>
+        
+                            <h3><%= productos[2].Descripcion %><br>
+                                <%= productos[2].UMedida %><br>
+                                Precio: <%= productos[2].PUnitario %>
+                            </h3>
+                            <form action="/agregar-al-carrito/<%= productos[2].IdAlmacen %>" method="post">
+        
+                                <button type="submit" class="agregar-carrito-btn">Agregar al carrito</button>
+                            </form>
+                        </li>
+                    <% } else { %>
+                        <p>No hay productos disponibles</p>
+                    <% } %>
+            </ul>
+            </div>
+
+            <div class="box">
+                <h3>Ricas y refrescantes</h3>
+                <div class="image">
+                    <img src="/imagenes/Imagen4.jpg" alt="">
+                </div>
+                <ul>
+                    <% if (productos.length > 3) { %>
+                        <li>
+        
+                            <h3><%= productos[3].Descripcion %><br>
+                                <%= productos[3].UMedida %><br>
+                                Precio: <%= productos[3].PUnitario %>
+                            </h3>
+                            <form action="/agregar-al-carrito/<%= productos[3].IdAlmacen %>" method="post">
+        
+                                <button type="submit" class="agregar-carrito-btn">Agregar al carrito</button>
+                            </form>
+                        </li>
+                    <% } else { %>
+                        <p>No hay productos disponibles</p>
+                    <% } %>
+            </ul>
+            </div>
+
+            <div class="box">
+                <h3>Ricas y refrescantes</h3>
+                <div class="image">
+                    <img src="/imagenes/Imagen5.jpg" alt="">
+                </div>
+                <ul>
+                    <% if (productos.length > 4) { %>
+                        <li>
+        
+                            <h3><%= productos[4].Descripcion %><br>
+                                <%= productos[4].UMedida %><br>
+                                Precio: <%= productos[4].PUnitario %>
+                            </h3>
+                            <form action="/agregar-al-carrito/<%= productos[4].IdAlmacen %>" method="post">
+        
+                                <button type="submit" class="agregar-carrito-btn">Agregar al carrito</button>
+                            </form>
+                        </li>
+                    <% } else { %>
+                        <p>No hay productos disponibles</p>
+                    <% } %>
+            </ul>
+            </div>
+
+            <div class="box">
+                <h3>Ricas y refrescantes</h3>
+                <div class="image">
+                    <img src="/imagenes/Imagen6.jpg" alt="">
+                </div>
+                <ul>
+                    <% if (productos.length > 5) { %>
+                        <li>
+        
+                            <h3><%= productos[5].Descripcion %><br>
+                                <%= productos[5].UMedida %><br>
+                                Precio: <%= productos[5].PUnitario %>
+                            </h3>
+                            <form action="/agregar-al-carrito/<%= productos[5].IdAlmacen %>" method="post">
+        
+                                <button type="submit" class="agregar-carrito-btn">Agregar al carrito</button>
+                            </form>
+                        </li>
+                    <% } else { %>
+                        <p>No hay productos disponibles</p>
+                    <% } %>
+            </ul>
+            </div>
+
+            <div class="box">
+                <h3>Ricas y refrescantes</h3>
+                <div class="image">
+                    <img src="/imagenes/Imagen7.jpg" alt="">
+                </div>
+                <ul>
+                    <% if (productos.length > 6) { %>
+                        <li>
+        
+                            <h3><%= productos[6].Descripcion %><br>
+                                <%= productos[6].UMedida %><br>
+                                Precio: <%= productos[6].PUnitario %>
+                            </h3>
+                            <form action="/agregar-al-carrito/<%= productos[6].IdAlmacen %>" method="post">
+        
+                                <button type="submit" class="agregar-carrito-btn">Agregar al carrito</button>
+                            </form>
+                        </li>
+                    <% } else { %>
+                        <p>No hay productos disponibles</p>
+                    <% } %>
+            </ul>
+            </div>
+
+            <div class="box">
+                <h3>Ricas y refrescantes</h3>
+                <div class="image">
+                    <img src="/imagenes/Imagen8.jpg" alt="">
+                </div>
+                <ul>
+                    <% if (productos.length > 7) { %>
+                        <li>
+        
+                            <h3><%= productos[7].Descripcion %><br>
+                                <%= productos[7].UMedida %><br>
+                                Precio: <%= productos[7].PUnitario %>
+                            </h3>
+                            <form action="/agregar-al-carrito/<%= productos[7].IdAlmacen %>" method="post">
+        
+                                <button type="submit" class="agregar-carrito-btn">Agregar al carrito</button>
+                            </form>
+                        </li>
+                    <% } else { %>
+                        <p>No hay productos disponibles</p>
+                    <% } %>
+            </ul>
+            </div>
+        </div>
+    </section>
+
+    <section class="contact" id="contact">
+
+        <h1 class="heading"> <span>Contacta</span> con nosotros </h1>
+        <div class="row">
+            <iframe class="map" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3952.0638814667946!2d-72.50774858957516!3d7.888385792101425!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e6645762e2a070d%3A0x704eeb743352fc82!2sConstantinopla%20Joyeria!5e0!3m2!1ses!2sco!4v1697752792862!5m2!1ses!2sco" allowfullscreen="" loading="lazy"></iframe>
+            <form action="">
+                <h3>Ponte en Contacto</h3>
+                <div class="inputBox">
+                    <span class="fas fa-user"></span>
+                    <input type="text" placeholder="Nombre">
+                </div>
+
+                <div class="inputBox">
+                    <span class="fas fa-envelope"></span>
+                    <input type="email" placeholder="Email">
+                </div>
+
+                <div class="inputBox">
+                    <span class="fas fa-phone"></span>
+                    <input type="number" placeholder="Telefono">
+                </div>
+
+                <input type="submit" value="Contactanos ahora" class="btn">
+
+            </form>
+        </div>
+    </section>
+
+    <section class="footer">
+
+        <div class="share">
+            <a href="#" class="fa-brands fa-whatsapp"></a>
+        </div>
+
+        <div class="links">
+            <a href="#home">Inicio</a>
+            <a href="#about">Sobre</a>
+            <a href="#menu">Productos</a>
+            <a href="#contact">Contacto</a>
+        </div>
+
+        <div class="credit"> creada por <span>Diego Niño</span> || todos los derechos reservados </div>
+
+    </section>
+
+</body>
+</html>

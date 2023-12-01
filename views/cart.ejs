@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/cart.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <script src="https://kit.fontawesome.com/0dd34c83b9.js" crossorigin="anonymous"></script>
+    <title>Carrito de compras</title>
+</head>
+<body>
+    <header class="header">
+        <a href="#" class="logo">
+            <img src="" alt="">
+        </a>
+
+        <nav class="navbar">
+            <a href="/">Inicio</a>
+            <a href="/#about">Sobre</a>
+            <a href="/#menu">Productos</a>
+            <a href="/#contact">Contacto</a>
+        </nav>
+    </header>
+
+    <div id="titulo-container">
+        <h1>Carrito de Compras</h1>
+    </div>
+
+    <div id="productos-container">
+        <% productos.forEach((producto, index) => { %>
+            <div class="producto">
+                <div class="product-info">
+                    <h3><%= producto.Descripcion %></h3>
+                    <p><%= producto.UMedida %></p>
+                    <p class="precio">Precio: $<%= producto.PUnitario %></p>
+                </div>
+                <button class="buy-button" onclick="agregarAlCarrito('<%= producto.Descripcion %>', '<%= producto.PUnitario %>', '<%= producto.UMedida %>')">Comprar</button>
+            </div>
+        <% }); %>
+    </div>
+
+    <div id="carrito-container">
+        <h2>Carrito</h2>
+        <ul id="carrito-lista">
+            <!-- Aquí se mostrarán los elementos del carrito dinámicamente -->
+        </ul>
+        <p>Total: $<span id="total-carrito">0.00</span></p>
+    </div>
+
+    <script>
+        var carrito = [];
+        var total = 0;
+
+        function agregarAlCarrito(Descripcion, PUnitario, UMedida) {
+            carrito.push({ Descripcion: Descripcion, PUnitario: parseFloat(PUnitario), UMedida: UMedida });
+            actualizarCarrito();
+        }
+
+        function eliminarDelCarrito(index) {
+            carrito.splice(index, 1);
+            actualizarCarrito();
+        }
+
+        function actualizarCarrito() {
+            total = 0;
+            var carritoLista = document.getElementById('carrito-lista');
+            var totalCarrito = document.getElementById('total-carrito');
+
+            carritoLista.innerHTML = '';
+
+            carrito.forEach((item, index) => {
+                total += item.PUnitario;
+                var listItem = document.createElement('li');
+                listItem.innerHTML = `
+                    <div class="carrito-item">
+                        <span>${item.Descripcion} - ${item.UMedida}</span>
+                        <span>Precio: $${item.PUnitario.toFixed(2)}</span>
+                        <button onclick="eliminarDelCarrito(${index})">Eliminar</button>
+                    </div>
+                `;
+                carritoLista.appendChild(listItem);
+            });
+
+            totalCarrito.textContent = total.toFixed(2);
+        }
+    </script>
+
+    <script src="https://www.paypal.com/sdk/js?client-id=Af29lcyGquXblmRHIHwZ_9CUF-z8o-GTQDnmBKusfGXSQqoenu0LG2SilsHEJneqIOuy7TGvdgh7mnIZ&currency=USD"></script>
+
+    <!-- Configura un elemento de contenedor para el botón -->
+    <div id="paypal-button-container"></div>
+
+    <script>
+        paypal.Buttons({
+            createOrder: function(data, actions) {
+                return actions.order.create({
+                    purchase_units: [{
+                        amount: {
+                            value: total.toString(), // Precio total del carrito
+                            currency_code: 'USD'
+                        },
+                        description: 'Productos en el carrito' // Descripción del carrito
+                    }]
+                });
+            },
+            onApprove: function(data, actions) {
+                return actions.order.capture().then(function(details) {
+                    alert('Pago completado con éxito. ID de transacción: ' + details.id);
+                });
+            },
+            onError: function(err) {
+                console.log(err);
+                alert('Ha ocurrido un error durante el proceso de pago. Por favor, inténtalo de nuevo.');
+            }
+        }).render('#paypal-button-container');
+    </script>
+
+    <section class="footer">
+        <div class="share">
+            <a href="#" class="fa-brands fa-whatsapp"></a>
+        </div>
+        <div class="links">
+            <a href="/">Inicio</a>
+            <a href="/#about">Sobre</a>
+            <a href="/#menu">Productos</a>
+            <a href="/#contact">Contacto</a>
+        </div>
+        <div class="credit"> creada por <span>Diego Niño</span> || todos los derechos reservados </div>
+    </section>
+</body>
+</html>
